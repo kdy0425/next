@@ -9,7 +9,7 @@ export default function About(){
                 <meta name="description" content="리액트 공부" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <h1>소개페이지</h1>
+            <h1>소개페ssssss이지</h1>
         </Layout>
     )
 }
