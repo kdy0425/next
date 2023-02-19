@@ -1,0 +1,33 @@
+@font-face {
+    font-family: 'GmarketSans';
+    font-weight: 300;
+    font-style: normal;
+    src: url('../public/fonts/GmarketSansLight.eot');
+    src: url('../public/fonts/GmarketSansLight.eot?#iefix') format('embedded-opentype'),
+         url('../public/fonts/GmarketSansLight.woff2') format('woff2'),
+         url('../public/fonts/GmarketSansLight.woff') format('woff'),
+         url('../public/fonts/GmarketSansLight.ttf') format("truetype");
+    font-display: swap;
+} 
+@font-face {
+    font-family: 'GmarketSans';
+    font-weight: 400;
+    font-style: normal;
+    src: url('../public/fonts/GmarketSansMedium.eot');
+    src: url('../public/fonts/GmarketSansMedium.eot?#iefix') format('embedded-opentype'),
+         url('../public/fonts/GmarketSansMedium.woff2') format('woff2'),
+         url('../public/fonts/GmarketSansMedium.woff') format('woff'),
+         url('../public/fonts/GmarketSansMedium.ttf') format("truetype");
+    font-display: swap;
+} 
+@font-face {
+    font-family: 'GmarketSans';
+    font-weight: 700;
+    font-style: normal;
+    src: url('../public/fonts/GmarketSansBold.eot');
+    src: url('../public/fonts/GmarketSansBold.eot?#iefix') format('embedded-opentype'),
+         url('../public/fonts/GmarketSansBold.woff2') format('woff2'),
+         url('../public/fonts/GmarketSansBold.woff') format('woff'),
+         url('../public/fonts/GmarketSansBold.ttf') format("truetype");
+    font-display: swap;
+} 

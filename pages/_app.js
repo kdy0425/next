@@ -1,11 +1,13 @@
+import '../styles/common.css'
 import '../styles/globals.css'
-import { ThemeProvider } from 'next-themes'
+import '../styles/GmarketSans.css';
+import 'sweetalert2/dist/sweetalert2.css';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ThemeProvider attribute='class'>
+    <div className={Component.headerStyle}>
       <Component {...pageProps} />
-    </ThemeProvider>
+    </div>
   )
 }
 
