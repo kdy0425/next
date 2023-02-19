@@ -11,6 +11,7 @@ export default function About() {
                 <meta name="description" content="DODOOM" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+<<<<<<< HEAD
             <div id="content" className="mgt0">
                 <div className="about_visual">
                     <div className="container">
@@ -86,6 +87,10 @@ export default function About() {
             </div>
         </div>
         </Layout >
+=======
+            <h1>소개페ssssss이지</h1>
+        </Layout>
+>>>>>>> 02b8fd41eb9a00e08ed8b2be4f07cfd8b843a4a5
     )
 }
 
