@@ -11,9 +11,6 @@ export default function Home(props) {
   return (
     <Layout>
       <Head>
-        <title>DODOOM</title>
-        <meta name="description" content="DODOOM" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div id="content">

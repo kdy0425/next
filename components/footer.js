@@ -1,13 +1,14 @@
 import Link from "next/link";
+import Totop from "./toTop/toTop";
 
 export default function Header(){
     return (
         <div id="footer">
-            <a href="#" id="to_top" >TOP</a>
+            <Totop/>
             <div className="ft_top clearfix">
                 <div className="container">
                     <span className="prj_title">돋움과 함께 성공적인 프로젝트를 경험하세요</span>
-                    <Link href="#" className="prj_inquiry"><span className="txt"><span>프로젝트 </span>문의하기</span></Link>
+                    <Link href="/request" className="prj_inquiry"><span className="txt"><span>프로젝트 </span>문의하기</span></Link>
                 </div>
             </div>
             <div className="ft_bottom">

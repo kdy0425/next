@@ -1,7 +1,23 @@
-export default function PageNotFound(){
+import Layout from "../components/layout";
+import Head from "next/head";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+
+export default function PageNotFound() {
     return (
-        <div>
-            <h1>404 page</h1>
-        </div>
+        <Layout>
+            <Head>
+                <title>DODOOM 404</title>
+            </Head>
+            <div id="content">
+                <div className="not_found">
+                404 page
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                </div>
+            </div>
+        </Layout >
     )
 }

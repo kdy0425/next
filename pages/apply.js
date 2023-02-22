@@ -1,45 +1,57 @@
 import Layout from "../components/layout";
 import Head from "next/head";
 import Link from "next/link";
+import Axios from "axios";
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Swal from "sweetalert2";
+import Modal from '../components/modal/modal';
 
 export default function Apply() {
+    const [modalOpen, setModalOpen] = useState(false);
+    const openModal = () => {
+        setModalOpen(true);
+    };
+    const closeModal = () => {
+        setModalOpen(false);
+    };
+    
     const errorMessage = [];
     const [uploadFiles, setuploadFiles] = useState('');
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => {
-        console.log(data);
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        shouldFocusError: false,
+    });
+
+    const onSubmit = (data, e) => {
+        Axios
+        .post(
+            'https://api.dodoom.co.kr/apply/add_apply',
+            data,
+            { headers: { 'Content-Type': 'multipart/form-data' }}
+         )
+        .then(response => {
+            console.log(data);
+            console.log(response.data);
+            Swal.fire(
+                response.data.message
+            )
+            e.target.reset();
+            fileRemove()
+        })
+        .catch(error => {console.log(error.data)});
     }
     
     const onError = (error) => {
-        //Swal.fire('등록시 문제발생했습니다.')
-        console.log(error);
-        let aaa = error;
-        console.log(aaa);
-        let bbb = ['11', '22','33'];
-        console.log(bbb);
-
+        let errorItems = error;
         let newArr = [];
-
-        for (let i = 0; i < Object.keys(aaa).length; i++) {
-            let key = Object.keys(aaa)[i];
-            let value = Object.values(aaa)[i];
-            newArr.push({ value });
+        for (let i = 0; i < Object.keys(errorItems).length; i++) {
+            let value = Object.values(errorItems)[i];
+            newArr.push( value.message );
         }
-
-        console.log(newArr);
-
-        // {Object.keys(errors).map((fieldName) => (
-        // <ErrorMessage errors={errors} name={fieldName as any} as="div" key={fieldName} />
-        // ))}
-        
-        // error.forEach(element => {
-        //     console.log(element.message);
-        // });
-
-        //errorMessage.push(item.message)
+        Swal.fire(
+            newArr.join("\n")
+        )
+        console.log(error)
     };
 
     const handleUpload = (e) => {
@@ -74,9 +86,7 @@ export default function Apply() {
     return (
         <Layout>
             <Head>
-                <title>DODOOM</title>
-                <meta name="description" content="DODOOM" />
-                <link rel="icon" href="/favicon.ico" />
+                <title>DODOOM 함께 성장하고 싶어요</title>
             </Head>
             <div id="content">
                 <div className="container">
@@ -98,23 +108,23 @@ export default function Apply() {
                                 <div className="cnt">
                                     <div className="form_labels">
                                         <div className="item">
-                                            <input {...register("type", { required: {value:true,message:"지원분야 선택은 필수값 입니다."}})} id="ck1" type="checkbox" value="기획자" />
+                                            <input {...register("part", { required: {value:true,message:"지원분야 선택은 필수값 입니다."}})} id="ck1" type="radio" value="기획자" />
                                             <label htmlFor="ck1">기획자</label>
                                         </div>
                                         <div className="item">
-                                            <input {...register("type", { required: {value:true,message:"지원분야 선택은 필수값 입니다."}})} id="ck2" type="checkbox" value="디자이너" />
+                                            <input {...register("part", { required: {value:true,message:"지원분야 선택은 필수값 입니다."}})} id="ck2" type="radio" value="디자이너" />
                                             <label htmlFor="ck2">디자이너</label>
                                         </div>
                                         <div className="item">
-                                            <input {...register("type", { required: {value:true,message:"지원분야 선택은 필수값 입니다."}})} id="ck3" type="checkbox" value="퍼블리싱" />
+                                            <input {...register("part", { required: {value:true,message:"지원분야 선택은 필수값 입니다."}})} id="ck3" type="radio" value="퍼블리싱" />
                                             <label htmlFor="ck3">퍼블리싱</label>
                                         </div>
                                         <div className="item">
-                                            <input {...register("type", { required: {value:true,message:"지원분야 선택은 필수값 입니다."}})} id="ck4" type="checkbox" value="개발자" />
+                                            <input {...register("part", { required: {value:true,message:"지원분야 선택은 필수값 입니다."}})} id="ck4" type="radio" value="개발자" />
                                             <label htmlFor="ck4">개발자</label>
                                         </div>
                                         <div className="item">
-                                            <input {...register("type", { required: {value:true,message:"지원분야 선택은 필수값 입니다."}})} id="ck5" type="checkbox" value="마케팅" />
+                                            <input {...register("part", { required: {value:true,message:"지원분야 선택은 필수값 입니다."}})} id="ck5" type="radio" value="마케팅" />
                                             <label htmlFor="ck5">마케팅</label>
                                         </div>
                                     </div>
@@ -128,13 +138,21 @@ export default function Apply() {
                                 <div className="cnt">
                                     <div className="form_ip">
                                         <div className="item">
-                                            <input type="text" placeholder="이름" {...register("company", { required: "이름은 필수값 입니다.", })} />
+                                            <input type="text" placeholder="이름" {...register("name", { required: "이름은 필수값 입니다.", })} />
                                         </div>
                                         <div className="item">
                                             <input type="text" placeholder="이메일" {...register("email", { required: '이메일은 필수값 입니다.', pattern: /^\S+@\S+$/i })} />
                                         </div>
                                         <div className="item">
-                                            <input type="tel" placeholder="연락처" {...register("tel", { required: '연락처는 필수값 입니다.', minLength: 6, maxLength: 12 })} />
+                                            <input type="tel" maxLength={11} placeholder="연락처" 
+                                            {...register("tel", { 
+                                                required: '연락처는 필수값 입니다.',
+                                                maxLength: {
+                                                    value: 12,
+                                                    message: "연락처는 최대 11자리입니다."
+                                                }
+                                            }
+                                            )} />
                                         </div>
                                     </div>
                                 </div>
@@ -166,16 +184,39 @@ export default function Apply() {
                                 </div>
                                 <div className="form_check">
                                     <input {...register("terms", { required: '개인정보 수집 및 이용 동의는 필수입니다.'})} id="fck1" type="checkbox" value="yes" />
-                                    <label htmlFor="fck1"></label> <a href="#" onClick={e => e.preventDefault()}>개인정보 수집ㆍ이용</a>에 동의합니다
+                                    <label htmlFor="fck1"></label> <button type="button" onClick={openModal}>개인정보 수집ㆍ이용</button>에 동의합니다
                                 </div>
                             </div>
                         </div>
                         <div className="form_btns">
-                            <button type="submit" className="btn submit">프로젝트 문의하기</button>
+                            <button type="submit" className="btn submit">지원하기</button>
                         </div>
                     </form>
                 </div>
             </div>
+
+            <Modal open={modalOpen} close={closeModal} header="개인정보 수집 및 이용에 대한 안내" name="terms_layer">
+                <div className="terms_box">
+                    <div className="terms">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>목적</th>
+                                    <th>항목</th>
+                                    <th>보유기간</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>비즈니스, 채용</td>
+                                    <td>이름, 이메일주소, 휴대폰번호</td>
+                                    <td>관계법령에 따라 5년</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </Modal>
         </Layout >
     );
 }

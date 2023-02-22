@@ -20,9 +20,7 @@ export default function Contact() {
     return (
         <Layout>
             <Head>
-                <title>DODOOM</title>
-                <meta name="description" content="DODOOM" />
-                <link rel="icon" href="/favicon.ico" />
+                <title>DODOOM 오시는길</title>
             </Head>
             <div id="content" className="mgb0">
                 <div className="container">

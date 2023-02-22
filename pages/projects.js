@@ -47,9 +47,7 @@ export default function Projects(props) {
     return (
         <Layout>
             <Head>
-                <title>리액트</title>
-                <meta name="description" content="리액트 공부" />
-                <link rel="icon" href="/favicon.ico" />
+                <title>DODOOM 프로젝트</title>
             </Head>
             <div id="content">
                 <div className="container">

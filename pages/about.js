@@ -1,17 +1,23 @@
 import Layout from "../components/layout";
 import Head from "next/head";
+import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import technologyImg1 from '../public/images/technology_img1.png'
+import technologyImg2 from '../public/images/technology_img2.png'
+import technologyImg3 from '../public/images/technology_img3.png'
+import technologyImg4 from '../public/images/technology_img4.png'
+import technologyImg5 from '../public/images/technology_img5.png'
+import technologyImg6 from '../public/images/technology_img6.png'
+import technologyImg7 from '../public/images/technology_img7.png'
+import technologyImg8 from '../public/images/technology_img8.png'
 
 export default function About() {
     return (
         <Layout>
             <Head>
-                <title>DODOOM</title>
-                <meta name="description" content="DODOOM" />
-                <link rel="icon" href="/favicon.ico" />
+                <title>DODOOM 회사소개</title>
             </Head>
-<<<<<<< HEAD
             <div id="content" className="mgt0">
                 <div className="about_visual">
                     <div className="container">
@@ -73,24 +79,20 @@ export default function About() {
                         <Swiper
                         slidesPerView={'auto'}
                         >
-                        <SwiperSlide><img src="/images/technology_img1.png" alt=""/></SwiperSlide>
-                        <SwiperSlide><img src="/images/technology_img2.png" alt=""/></SwiperSlide>
-                        <SwiperSlide><img src="/images/technology_img3.png" alt=""/></SwiperSlide>
-                        <SwiperSlide><img src="/images/technology_img4.png" alt=""/></SwiperSlide>
-                        <SwiperSlide><img src="/images/technology_img5.png" alt=""/></SwiperSlide>
-                        <SwiperSlide><img src="/images/technology_img6.png" alt=""/></SwiperSlide>
-                        <SwiperSlide><img src="/images/technology_img7.png" alt=""/></SwiperSlide>
-                        <SwiperSlide><img src="/images/technology_img8.png" alt=""/></SwiperSlide>
+                        <SwiperSlide><Image src={technologyImg1} alt=""/></SwiperSlide>
+                        <SwiperSlide><Image src={technologyImg2} alt=""/></SwiperSlide>
+                        <SwiperSlide><Image src={technologyImg3} alt=""/></SwiperSlide>
+                        <SwiperSlide><Image src={technologyImg4} alt=""/></SwiperSlide>
+                        <SwiperSlide><Image src={technologyImg5} alt=""/></SwiperSlide>
+                        <SwiperSlide><Image src={technologyImg6} alt=""/></SwiperSlide>
+                        <SwiperSlide><Image src={technologyImg7} alt=""/></SwiperSlide>
+                        <SwiperSlide><Image src={technologyImg8} alt=""/></SwiperSlide>
                         </Swiper>
                     </div>
                 </div>
             </div>
         </div>
         </Layout >
-=======
-            <h1>소개페ssssss이지</h1>
-        </Layout>
->>>>>>> 02b8fd41eb9a00e08ed8b2be4f07cfd8b843a4a5
     )
 }
 

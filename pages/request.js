@@ -1,17 +1,56 @@
 import Layout from "../components/layout";
 import Head from "next/head";
 import Link from "next/link";
+import Axios from "axios";
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Swal from "sweetalert2";
+import Modal from '../components/modal/modal';
 
-export default function Request() {
+export default function Apply() {
+    const [modalOpen, setModalOpen] = useState(false);
+    const openModal = () => {
+        setModalOpen(true);
+    };
+    const closeModal = () => {
+        setModalOpen(false);
+    };
+
+    const errorMessage = [];
     const [uploadFiles, setuploadFiles] = useState('');
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        shouldFocusError: false,
+    });
+
+    const onSubmit = (data, e) => {
+        Axios
+        .post(
+            'https://api.dodoom.co.kr/request/add_request',
+            data,
+            { headers: { 'Content-Type': 'multipart/form-data' }}
+         )
+        .then(response => {
+            console.log(response.data);
+            Swal.fire(
+                response.data.message
+            )
+            e.target.reset();
+            fileRemove()
+        })
+        .catch(error => {console.log(error.data)});
+    }
+    
     const onError = (error) => {
-        console.log('에러');
-        console.log(error);
+        let errorItems = error;
+        let newArr = [];
+        for (let i = 0; i < Object.keys(errorItems).length; i++) {
+            let value = Object.values(errorItems)[i];
+            newArr.push( value.message );
+        }
+        Swal.fire(
+            newArr.join("\n")
+        )
+        console.log(error)
     };
 
     const handleUpload = (e) => {
@@ -46,9 +85,7 @@ export default function Request() {
     return (
         <Layout>
             <Head>
-                <title>DODOOM</title>
-                <meta name="description" content="DODOOM" />
-                <link rel="icon" href="/favicon.ico" />
+                <title>DODOOM 프로젝트를 의뢰합니다</title>
             </Head>
             <div id="content">
                 <div className="container">
@@ -57,9 +94,9 @@ export default function Request() {
 
                     <div className="cate_tap kr">
                         <Link href='/request' className="view_more active"><span>프로젝트를 의뢰합니다</span></Link>
-                        <Link href='/apply' className="view_more "><span>함께 성장하고 싶어요</span></Link>
+                        <Link href='/apply' className="view_more"><span>함께 성장하고 싶어요</span></Link>
                     </div>
-
+                    
                     <form onSubmit={handleSubmit(onSubmit, onError)}>
                         <div className="form_wrap">
                             <div className="form_box">
@@ -70,13 +107,26 @@ export default function Request() {
 
                                 <div className="cnt">
                                     <div className="form_labels">
-                                        <div className="item"><input {...register("type")} id="ck1" type="checkbox" value="온라인솔루션" /><label htmlFor="ck1">온라인솔루션</label></div>
-                                        <div className="item"><input {...register("type")} id="ck2" type="checkbox" value="콘텐츠개발" /><label htmlFor="ck2">콘텐츠개발</label></div>
-                                        <div className="item"><input {...register("type")} id="ck3" type="checkbox" value="마케팅" /><label htmlFor="ck3">마케팅</label></div>
-                                        <div className="item"><input {...register("type")} id="ck4" type="checkbox" value="지역개발컨설팅" /><label htmlFor="ck4">지역개발컨설팅</label></div>
+                                        <div className="item">
+                                            <input {...register("type", { required: {value:true,message:"분야 선택은 필수값 입니다."}})} id="ck1" type="checkbox" value="온라인솔루션" />
+                                            <label htmlFor="ck1">온라인솔루션</label>
+                                        </div>
+                                        <div className="item">
+                                            <input {...register("type", { required: {value:true,message:"분야 선택은 필수값 입니다."}})} id="ck2" type="checkbox" value="콘텐츠개발" />
+                                            <label htmlFor="ck2">콘텐츠개발</label>
+                                        </div>
+                                        <div className="item">
+                                            <input {...register("type", { required: {value:true,message:"분야 선택은 필수값 입니다."}})} id="ck3" type="checkbox" value="마케팅" />
+                                            <label htmlFor="ck3">마케팅</label>
+                                        </div>
+                                        <div className="item">
+                                            <input {...register("type", { required: {value:true,message:"분야 선택은 필수값 입니다."}})} id="ck4" type="checkbox" value="지역개발컨설팅" />
+                                            <label htmlFor="ck4">지역개발컨설팅</label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
                             <div className="form_box">
                                 <div className="title">
                                     <strong>2. 프로젝트 주요 내용을 입력해 주세요</strong>
@@ -99,33 +149,47 @@ export default function Request() {
                                             </div>
                                         </div>
                                     </div>
-                                    <p className="form_txt">* 이력서,포트폴리오를 첨부해주세요. 첨부 가능한 파일 형태는 ppt, pptx, pdf, doc, hwp, zip (최대 20MB 까지 첨부 가능합니다)</p>
-                                    
+                                    <p className="form_txt">* 참고자료를 첨부해주세요. 첨부 가능한 파일 형태는 ppt, pptx, pdf, doc, hwp, zip (최대 20MB 까지 첨부 가능합니다)</p>
                                 </div>
                             </div>
+                            
                             <div className="form_box">
                                 <div className="title">
                                     <strong>3. 의뢰인 정보를 입력해 주세요</strong>
                                 </div>
                                 <div className="cnt">
                                     <div className="form_ip">
-                                        <div className="item">
-                                            <input type="text" placeholder="회사이름" {...register("company", { required: true, })} />
+                                        <div className="item"> 
+                                            <input type="text" placeholder="회사이름" {...register("company", { required: "회사이름은 필수값 입니다." })} />
                                         </div>
                                         <div className="item">
-                                            <input type="text" placeholder="담당자/직급" {...register("name", { required: true, maxLength: 100 })} />
+                                            <input type="text" placeholder="담당자/직급" {...register("name", { required: '담당자/직급은 필수값 입니다.'})} />
                                         </div>
                                         <div className="item">
-                                            <input type="text" placeholder="이메일" {...register("email", { required: true, pattern: /^\S+@\S+$/i })} />
+                                            <input type="text" placeholder="이메일" {...register("email", { required: '이메일은 필수값 입니다.', 
+                                                pattern: {
+                                                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                                    message: "이메일 형식을 확인해주세요."
+                                                }
+                                            }
+                                            )} />
                                         </div>
                                         <div className="item">
-                                            <input type="tel" placeholder="연락처" {...register("tel", { required: true, minLength: 6, maxLength: 12 })} />
+                                            <input type="tel" maxLength={11} placeholder="연락처" 
+                                            {...register("tel", { 
+                                                required: '연락처는 필수값 입니다.',
+                                                maxLength: {
+                                                    value: 11,
+                                                    message: "연락처는 최대 11자리입니다."
+                                                }
+                                            }
+                                            )} />
                                         </div>
                                     </div>
                                 </div>
                                 <div className="form_check">
-                                    <input {...register("terms", { required: true})} id="fck1" type="checkbox" value="yes" />
-                                    <label htmlFor="fck1"></label> <a href="#" onClick={e => e.preventDefault()}>개인정보 수집ㆍ이용</a>에 동의합니다
+                                    <input {...register("terms", { required: '개인정보 수집 및 이용 동의는 필수입니다.'})} id="fck1" type="checkbox" value="yes" />
+                                    <label htmlFor="fck1"></label> <button type="button" onClick={openModal}>개인정보 수집ㆍ이용</button>에 동의합니다
                                 </div>
                             </div>
                         </div>
@@ -135,6 +199,29 @@ export default function Request() {
                     </form>
                 </div>
             </div>
+
+            <Modal open={modalOpen} close={closeModal} header="개인정보 수집 및 이용에 대한 안내" name="terms_layer">
+                <div className="terms_box">
+                    <div className="terms">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>목적</th>
+                                    <th>항목</th>
+                                    <th>보유기간</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>비즈니스, 채용</td>
+                                    <td>이름, 이메일주소, 휴대폰번호</td>
+                                    <td>관계법령에 따라 5년</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </Modal>
         </Layout >
     );
 }
