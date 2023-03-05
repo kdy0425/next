@@ -190,7 +190,7 @@ export default function Home(props) {
 
 
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const res = await Axios.get("https://api.dodoom.co.kr/worklist/index")
 
   return {

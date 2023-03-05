@@ -26,6 +26,8 @@ export default function Projects(props) {
     //필터링
     const [itemList, setitemList] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState();
+    const [isLoading, setIsLoading] = useState(true);
+
     // Add default value on page load
     useEffect(() => {
         setitemList(items);
@@ -33,10 +35,12 @@ export default function Projects(props) {
     // Function to get filtered list
     function getFilteredList() {
         // Avoid filter when selectedCategory is null
+        setIsLoading(false);
         if (!selectedCategory) {
-        return itemList;
+            return itemList;
+        }else{
+            return itemList.filter((item) => item.cate[0] === selectedCategory);
         }
-        return itemList.filter((item) => item.cate[0] === selectedCategory);
     }
     // Avoid duplicate function calls with useMemo
     var filteredList = useMemo(getFilteredList, [selectedCategory, itemList]);
@@ -53,6 +57,14 @@ export default function Projects(props) {
                 <div className="container">
                     <h2 className="page_group">Work</h2>
                     <h3 className="page_title">고객의 생각을 담아<br />디지털 경험을 제공합니다</h3>
+
+                    {isLoading && (
+                    <>
+                    123
+                    </>
+                    )}
+                    {!isLoading && (
+                    <>
                     <div className="cate_tap">
                         <ul>
                             <li>
@@ -91,7 +103,8 @@ export default function Projects(props) {
                             </motion.li>
                         ))}
                     </ul>
-
+                    </>
+                    )}
                 </div>
             </div>
 
@@ -100,9 +113,9 @@ export default function Projects(props) {
 }
 
 
-export const getStaticProps = async () => {
-    const res = await Axios.get("https://api.dodoom.co.kr/worklist/index")
+export const getServerSideProps = async () => {
+    const res = await Axios.get(process.env.API_URL)
     return {
-        props: { data: res.data.slice(0, 6) },
+        props: { data: res.data },
     };
 };
