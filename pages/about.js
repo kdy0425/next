@@ -3,14 +3,6 @@ import Head from "next/head";
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import technologyImg1 from '../public/images/technology_img1.png'
-import technologyImg2 from '../public/images/technology_img2.png'
-import technologyImg3 from '../public/images/technology_img3.png'
-import technologyImg4 from '../public/images/technology_img4.png'
-import technologyImg5 from '../public/images/technology_img5.png'
-import technologyImg6 from '../public/images/technology_img6.png'
-import technologyImg7 from '../public/images/technology_img7.png'
-import technologyImg8 from '../public/images/technology_img8.png'
 
 export default function About() {
     return (
@@ -79,14 +71,14 @@ export default function About() {
                         <Swiper
                         slidesPerView={'auto'}
                         >
-                        <SwiperSlide><Image src={technologyImg1} alt=""/></SwiperSlide>
-                        <SwiperSlide><Image src={technologyImg2} alt=""/></SwiperSlide>
-                        <SwiperSlide><Image src={technologyImg3} alt=""/></SwiperSlide>
-                        <SwiperSlide><Image src={technologyImg4} alt=""/></SwiperSlide>
-                        <SwiperSlide><Image src={technologyImg5} alt=""/></SwiperSlide>
-                        <SwiperSlide><Image src={technologyImg6} alt=""/></SwiperSlide>
-                        <SwiperSlide><Image src={technologyImg7} alt=""/></SwiperSlide>
-                        <SwiperSlide><Image src={technologyImg8} alt=""/></SwiperSlide>
+                        <SwiperSlide><Image src="/images/technologyimg1.png" alt="" width={300} height={300} styles={{ objectFit: 'contain' }}/></SwiperSlide>
+                        <SwiperSlide><Image src="/images/technologyimg2.png" alt="" width={300} height={300} styles={{ objectFit: 'contain' }}/></SwiperSlide>
+                        <SwiperSlide><Image src="/images/technologyimg3.png" alt="" width={300} height={300} styles={{ objectFit: 'contain' }}/></SwiperSlide>
+                        <SwiperSlide><Image src="/images/technologyimg4.png" alt="" width={300} height={300} styles={{ objectFit: 'contain' }}/></SwiperSlide>
+                        <SwiperSlide><Image src="/images/technologyimg5.png" alt="" width={300} height={300} styles={{ objectFit: 'contain' }}/></SwiperSlide>
+                        <SwiperSlide><Image src="/images/technologyimg6.png" alt="" width={300} height={300} styles={{ objectFit: 'contain' }}/></SwiperSlide>
+                        <SwiperSlide><Image src="/images/technologyimg7.png" alt="" width={300} height={300} styles={{ objectFit: 'contain' }}/></SwiperSlide>
+                        <SwiperSlide><Image src="/images/technologyimg8.png" alt="" width={300} height={300} styles={{ objectFit: 'contain' }}/></SwiperSlide>
                         </Swiper>
                     </div>
                 </div>

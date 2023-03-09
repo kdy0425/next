@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }) {
 
       <meta property="og:title" content="DODOOM"></meta>
       <meta property="og:url" content="https://www.dodoom.co.kr"></meta>
-      <meta property="og:image" content="https://www.dodoom.co.kr/meta.jpg"></meta>
+      <meta property="og:image" content="https://www.dodoom.co.kr/favicon/meta.jpg"></meta>
       <meta property="og:site_name" content="DODOOM"></meta>
       <meta property="og:description" content="가치있게 담백하게"></meta>
 
