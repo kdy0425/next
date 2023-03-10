@@ -2,9 +2,10 @@ import '../styles/common.css'
 import '../styles/globals.css'
 import '../styles/GmarketSans.css';
 import 'sweetalert2/dist/sweetalert2.css';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Head from "next/head";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, router}) {
   return (
     <>
     <Head>
@@ -35,9 +36,21 @@ function MyApp({ Component, pageProps }) {
       <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png"/>
       <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png"/>
     </Head>
-    <div className={Component.headerStyle}>
-      <Component {...pageProps} />
-    </div>
+
+    <TransitionGroup>
+      <CSSTransition
+        key={router.pathname}
+        timeout={500}
+        classNames="page-transition"
+        unmountOnExit
+      >
+        <div className={Component.headerStyle}>
+          <Component {...pageProps} />
+        </div>
+      </CSSTransition>
+    </TransitionGroup>
+
+    
     </>
   )
 }

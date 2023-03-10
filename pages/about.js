@@ -71,14 +71,14 @@ export default function About() {
                         <Swiper
                         slidesPerView={'auto'}
                         >
-                        <SwiperSlide><Image src="/images/technologyimg1.png" alt="" width={300} height={300} styles={{ objectFit: 'contain' }}/></SwiperSlide>
-                        <SwiperSlide><Image src="/images/technologyimg2.png" alt="" width={300} height={300} styles={{ objectFit: 'contain' }}/></SwiperSlide>
-                        <SwiperSlide><Image src="/images/technologyimg3.png" alt="" width={300} height={300} styles={{ objectFit: 'contain' }}/></SwiperSlide>
-                        <SwiperSlide><Image src="/images/technologyimg4.png" alt="" width={300} height={300} styles={{ objectFit: 'contain' }}/></SwiperSlide>
-                        <SwiperSlide><Image src="/images/technologyimg5.png" alt="" width={300} height={300} styles={{ objectFit: 'contain' }}/></SwiperSlide>
-                        <SwiperSlide><Image src="/images/technologyimg6.png" alt="" width={300} height={300} styles={{ objectFit: 'contain' }}/></SwiperSlide>
-                        <SwiperSlide><Image src="/images/technologyimg7.png" alt="" width={300} height={300} styles={{ objectFit: 'contain' }}/></SwiperSlide>
-                        <SwiperSlide><Image src="/images/technologyimg8.png" alt="" width={300} height={300} styles={{ objectFit: 'contain' }}/></SwiperSlide>
+                        <SwiperSlide><Image src="/images/technologyimg1.png" alt="" width={300} height={300} priority styles={{ objectFit: 'contain' }}/></SwiperSlide>
+                        <SwiperSlide><Image src="/images/technologyimg2.png" alt="" width={300} height={300} priority styles={{ objectFit: 'contain' }}/></SwiperSlide>
+                        <SwiperSlide><Image src="/images/technologyimg3.png" alt="" width={300} height={300} priority styles={{ objectFit: 'contain' }}/></SwiperSlide>
+                        <SwiperSlide><Image src="/images/technologyimg4.png" alt="" width={300} height={300} priority styles={{ objectFit: 'contain' }}/></SwiperSlide>
+                        <SwiperSlide><Image src="/images/technologyimg5.png" alt="" width={300} height={300} priority styles={{ objectFit: 'contain' }}/></SwiperSlide>
+                        <SwiperSlide><Image src="/images/technologyimg6.png" alt="" width={300} height={300} priority styles={{ objectFit: 'contain' }}/></SwiperSlide>
+                        <SwiperSlide><Image src="/images/technologyimg7.png" alt="" width={300} height={300} priority styles={{ objectFit: 'contain' }}/></SwiperSlide>
+                        <SwiperSlide><Image src="/images/technologyimg8.png" alt="" width={300} height={300} priority styles={{ objectFit: 'contain' }}/></SwiperSlide>
                         </Swiper>
                     </div>
                 </div>

@@ -1,13 +1,20 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 export default function Header(){
+    const router = useRouter();
     const [modalOpen, setModalOpen] = useState(false);
     const openMenu = () => {
         setModalOpen(true);
     };
     const closeMenu = () => {
         setModalOpen(false);
+    };
+    const handleLinkClick = (href) => {
+        if (router.asPath === href) {
+            closeMenu(); 
+        }
     };
     return (
         <div id="header">
@@ -25,11 +32,41 @@ export default function Header(){
                     <div className={modalOpen ? 'nav_wrap active' : 'nav_wrap'} >
                         <div id="" className="nav_box">
                             <ul id="nav">
-                            <li><Link href='/'><span className="en">Home</span><span className="kr"><span>홈</span></span></Link></li>
-                            <li><Link href='/about'><span className="en">About</span><span className="kr"><span>회사소개</span></span></Link></li>
-                            <li><Link href='/projects'><span className="en">Work</span><span className="kr"><span>프로젝트</span></span></Link></li>
-                            <li><Link href='/request'><span className="en">Request</span><span className="kr"><span>문의 및 채용</span></span></Link></li>
-                            <li><Link href='/contact'><span className="en">Contact</span><span className="kr"><span>오시는길</span></span></Link></li>
+                            <li>
+                                <Link href='/'>
+                                    <div onClick={() => handleLinkClick('/')}>
+                                    <span className="en">Home</span><span className="kr"><span>홈</span></span>
+                                    </div>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href='/about'>
+                                    <div onClick={() => handleLinkClick('/about')}>
+                                    <span className="en">About</span><span className="kr"><span>회사소개</span></span>
+                                    </div>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href='/projects'>
+                                    <div onClick={() => handleLinkClick('/projects')}>
+                                    <span className="en">Work</span><span className="kr"><span>프로젝트</span></span>
+                                    </div>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href='/request'>
+                                    <div onClick={() => handleLinkClick('/request')}>
+                                    <span className="en">Request</span><span className="kr"><span>문의 및 채용</span></span>
+                                    </div>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href='/contact'>
+                                    <div onClick={() => handleLinkClick('/contact')}>
+                                    <span className="en">Contact</span><span className="kr"><span>오시는길</span></span>
+                                    </div>
+                                </Link>
+                            </li>
                             </ul>
                             <div className="brochure">
                                 <a href="#!" onClick={(e)=>e.preventDefault}>company brochure</a>
