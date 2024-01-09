@@ -85,7 +85,7 @@ export default function Apply() {
     return (
         <Layout>
             <Head>
-                <title>DODOOM 프로젝트를 의뢰합니다</title>
+                <title>돋움 DODOOM 프로젝트를 의뢰합니다</title>
             </Head>
             <div id="content">
                 <div className="container">
@@ -134,7 +134,7 @@ export default function Apply() {
                                 <div className="cnt">
                                     <textarea {...register("message")} />
 
-                                    <div className="file_box">
+                                    {/* <div className="file_box">
                                         <input id="fl1" 
                                         {...register("files")}
                                         type="file"
@@ -149,7 +149,7 @@ export default function Apply() {
                                             </div>
                                         </div>
                                     </div>
-                                    <p className="form_txt">* 참고자료를 첨부해주세요. 첨부 가능한 파일 형태는 ppt, pptx, pdf, doc, hwp, zip (최대 20MB 까지 첨부 가능합니다)</p>
+                                    <p className="form_txt">* 참고자료를 첨부해주세요. 첨부 가능한 파일 형태는 ppt, pptx, pdf, doc, hwp, zip (최대 20MB 까지 첨부 가능합니다)</p> */}
                                 </div>
                             </div>
                             

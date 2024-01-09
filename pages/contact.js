@@ -20,7 +20,7 @@ export default function Contact() {
     return (
         <Layout>
             <Head>
-                <title>DODOOM 오시는길</title>
+                <title>돋움 DODOOM 오시는길</title>
             </Head>
             <div id="content" className="mgb0">
                 <div className="container">

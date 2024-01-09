@@ -20,9 +20,8 @@ export default function Header(){
         <div id="header">
             <div className="hd_inner">
                 <div className="in_wrap">
-                    <h1 id="logo"><Link href="/">dodoom</Link></h1>
-
-                    <a href="#!" onClick={(e)=>e.preventDefault} className="hd_brochure">company brochure</a>
+                    <h1 id="logo"><Link href="/">돋움 dodoom</Link></h1>
+                    <a href="/_next/static/files/dodoom.pdf" className="hd_brochure" download>company brochure</a>
                     <button type="button" id="menuToggle" className="menu_toggle" onClick={openMenu}>
                         <span></span>
                         <span></span>
@@ -36,6 +35,13 @@ export default function Header(){
                                 <Link href='/'>
                                     <div onClick={() => handleLinkClick('/')}>
                                     <span className="en">Home</span><span className="kr"><span>홈</span></span>
+                                    </div>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href='/business/platform'>
+                                    <div onClick={() => handleLinkClick('/business/platform')}>
+                                    <span className="en">Business</span><span className="kr"><span>사업소개</span></span>
                                     </div>
                                 </Link>
                             </li>
@@ -69,7 +75,7 @@ export default function Header(){
                             </li>
                             </ul>
                             <div className="brochure">
-                                <a href="#!" onClick={(e)=>e.preventDefault}>company brochure</a>
+                                <a href="/_next/static/files/dodoom.pdf" download>company brochure</a>
                             </div>
                             <div className="nav_cs">
                                 <div className="item">

@@ -8,7 +8,7 @@ export default function About() {
     return (
         <Layout>
             <Head>
-                <title>DODOOM 회사소개</title>
+                <title>돋움 DODOOM 회사소개</title>
             </Head>
             <div id="content" className="mgt0">
                 <div className="about_visual">

@@ -6,6 +6,10 @@ import 'swiper/css';
 import Link from 'next/link';
 import Axios from "axios";
 
+import 'swiper/css/pagination';
+import SwiperCore, { Autoplay, Pagination } from 'swiper';
+SwiperCore.use([Autoplay, Pagination]);
+
 export default function Home(props) {
   const items = props.data;
   return (
@@ -15,76 +19,93 @@ export default function Home(props) {
 
       <div id="content">
         <span className="slogan">가치있게 담백하게</span>
+
         <div className="main_business">
           <div className="container mf">
             <Swiper
               observer={true}
               observeParents={true}
               allowTouchMove={true}
+              pagination={true}
+              autoplay={{
+                delay: 2000, // autoplay 간격 설정
+                disableOnInteraction: false,
+              }}
               breakpoints={{
                 // when window width is >= 640px
                 750: {
-                  allowTouchMove: true
+                  allowTouchMove: true,
+
                 }
               }}
             >
               <SwiperSlide>
-              <Link href="/about">
+                <Link href="/business/platform">
                   <div className="cnt">
-                    <span className="num">1</span>
-                    <span className="subject">온라인솔루션</span>
+                    <span className="num">01</span>
+                    <span className="subject">커머스플랫폼 구축</span>
                     <ul className="items">
-                      <li>e커머스 플랫폼 </li>
-                      <li>비즈니스 어플리케이션</li>
-                      <li>회원관리 시스템</li>
-                      <li>키오스크 판매 시스템</li>
-                      <li>교육 솔루션 </li>
+                      <li>쇼핑몰 시스템</li>
+                      <li>폐쇄몰 시스템</li>
+                      <li>식자재 유통관리 시스템</li>
                     </ul>
                   </div>
                 </Link>
               </SwiperSlide>
               <SwiperSlide>
-                <Link href="/about">
+              <Link href="/business/kiosk">
                   <div className="cnt">
-                    <span className="num">2</span>
+                    <span className="num">02</span>
+                    <span className="subject">키오스크/자판기 시스템</span>
+                    <ul className="items">
+                      <li>광고형 키오스크</li>
+                      <li>스마트약국자판기</li>
+                      <li>비대면상담 스마트자판기(수출)</li>
+                    </ul>
+                  </div>
+                </Link>
+              </SwiperSlide>
+              <SwiperSlide>
+              <Link href="/business/blockchain">
+                  <div className="cnt">
+                    <span className="num">03</span>
                     <span className="subject">블록체인 개발</span>
                     <ul className="items">
-                      <li>NFT Marketplace / 거래소 구축</li>
-                      <li>블록체인 투표시스템 구축</li>
-                      <li>블록체인 지역화폐 개발</li>
-                      <li>블록체인 농산물이력관리 개발</li>
+                      <li>블록체인기반 이커머스</li>
+                      <li>블록체인 마켓플레이스</li>
+                      <li>NFT 마켓플레이스</li>
                     </ul>
                   </div>
                 </Link>
               </SwiperSlide>
               <SwiperSlide>
-              <Link href="/about">
+              <Link href="/business/service">
                   <div className="cnt">
-                    <span className="num">3</span>
-                    <span className="subject">마케팅</span>
+                    <span className="num">04</span>
+                    <span className="subject">서비스</span>
                     <ul className="items">
-                      <li>온라인마케팅</li>
-                      <li>보상형 리워드광고</li>
-                      <li>온라인 판로 개척</li>
-                      <li>인플루언서 마케팅</li>
-                    </ul>
-                  </div>
-                </Link>
-              </SwiperSlide>
-              <SwiperSlide>
-              <Link href="/about">
-                  <div className="cnt">
-                    <span className="num">4</span>
-                    <span className="subject">지역개발컨설팅</span>
-                    <ul className="items">
-                      <li>농산어촌개발 컨설팅</li>
-                      <li>관광 및 교육 콘텐츠</li>
-                      <li>스마트 팜 </li>
+                      <li>도서유통판매관리 시스템</li>
+                      <li>대용량 선거인단 모집 및 투표시스템</li>
+                      <li>QR플랫폼</li>
                     </ul>
                   </div>
                 </Link>
               </SwiperSlide>
             </Swiper>
+          </div>
+        </div>
+
+        <div className="main_about">
+          <div className="container">
+            <h2 className="title_big">About</h2>
+            <div className="main_about_cnt">
+              <div class="about_title">가치있게 <br/>담백하게<span></span></div>
+              <div class="txt">
+                <p>Mark J.Penn의 Micro trend X에서 묘사된 것처럼, 트렌드는 바이러스처럼 예상치 못한 순간 전염되고 불가능이 현실이 되기도 합니다</p>
+                <p>누구도 예측하지 못한 그 한순간을 위해 돋움은 사용자 경험을 핵심가치로 생각하고 새로운 방향을 제시합니다</p>
+                <Link href="/about" className="view_more"><span>View More</span></Link>
+              </div>
+            </div>
           </div>
         </div>
 

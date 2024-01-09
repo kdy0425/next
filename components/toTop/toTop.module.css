@@ -1,3 +1,5 @@
-#to_top{position:fixed;z-index:100;right:100px;bottom:100px;width:52px;height:52px;color:#fff;font-family: 'Montserrat';font-size:1.2rem;border-radius:50%;background-color:#333;text-align:center;padding-top:24px;
-    background-repeat:no-repeat;background-position:center top 13px;background-size:9px;background-image:url('../../public/images/to_top.png');}
-    
+#to_top{position:fixed;z-index:100;right:100px;bottom:100px;border:0;width:52px;height:52px;color:#fff;font-family: 'Montserrat';font-size:1.2rem;border-radius:50%;background-color:#333;text-align:center;padding-top:24px;
+background-repeat:no-repeat;background-position:center top 13px;background-size:9px;background-image:url('../../public/images/to_top.png');}
+@media screen and (max-width: 800px) {
+    #to_top{right:20px;bottom:30px;}
+}

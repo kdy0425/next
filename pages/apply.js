@@ -86,7 +86,7 @@ export default function Apply() {
     return (
         <Layout>
             <Head>
-                <title>DODOOM 함께 성장하고 싶어요</title>
+                <title>돋움 DODOOM 함께 성장하고 싶어요</title>
             </Head>
             <div id="content">
                 <div className="container">
@@ -165,7 +165,7 @@ export default function Apply() {
                                 <div className="cnt">
                                     <textarea {...register("message")} />
 
-                                    <div className="file_box">
+                                    {/* <div className="file_box">
                                         <input id="fl1" 
                                         {...register("files")}
                                         type="file"
@@ -180,7 +180,7 @@ export default function Apply() {
                                             </div>
                                         </div>
                                     </div>
-                                    <p className="form_txt">* 이력서,포트폴리오를 첨부해주세요. 첨부 가능한 파일 형태는 ppt, pptx, pdf, doc, hwp, zip (최대 20MB 까지 첨부 가능합니다)</p>
+                                    <p className="form_txt">* 이력서,포트폴리오를 첨부해주세요. 첨부 가능한 파일 형태는 ppt, pptx, pdf, doc, hwp, zip (최대 20MB 까지 첨부 가능합니다)</p> */}
                                 </div>
                                 <div className="form_check">
                                     <input {...register("terms", { required: '개인정보 수집 및 이용 동의는 필수입니다.'})} id="fck1" type="checkbox" value="yes" />

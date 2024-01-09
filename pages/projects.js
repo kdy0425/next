@@ -51,7 +51,7 @@ export default function Projects(props) {
     return (
         <Layout>
             <Head>
-                <title>DODOOM 프로젝트</title>
+                <title>돋움 DODOOM 프로젝트</title>
             </Head>
             <div id="content">
                 <div className="container">
